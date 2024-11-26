@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: black;
+    background-color: beige;
+}
+
+
+
+li {
+    font-size: 19px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+
+.scratch-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 48px; /* Adjust the size as needed */
+    text-align: center;
+    margin-top: 20px; /* Adjust spacing from the top */
+    font-family: Arial, sans-serif; /* Optional: Choose a font */
+    color: #333; /* Optional: Set a color */
+}
+
+.center{text-align: center;}
+
+/* .homebg{
+    background-image: url('../images/space_background.jpeg');
+    background-position: top right;
+} */
+.bold{font-weight: bold;}
+
+.box1{
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+
+    /* you can put all of them in the same line seperated by spaces if you just put 'border: stuff' */
+}
+.two-columns {
+    display: flex;
+    justify-content: space-between; /* Space between the two columns */
+    align-items: center; /* Vertically centers the content */
+    border: 1px solid #ccc; /* Optional: for visibility */
+    padding: 10px; /* Optional: add spacing inside */
+    height: 800px; /* Optional: set the height of the container */
+}
+
+.column {
+    flex: 0 0 45%; /* Makes each column take up 45% of the width */
+    text-align: left; /* Centers the text within the column */
+    /* border: 1px dashed #666; Optional: for visibility */
+}
+
+/* Ensure the video container has some space below it */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* Adds spacing around the video */
+}
+
+/* Tableau container styling */
+.tableau-container {
+    display: flex;
+    justify-content: center; /* Centers the Tableau viz */
+    margin-top: 40px;  /* Adds some space above the Tableau visualization */
+    margin-bottom: 40px; /* Adds space below the Tableau visualization */
+    padding: 20px; /* Optional: Adds padding around the Tableau viz */
+}
+
+/* Optional: Ensure Tableau viz itself has a defined size */
+.tableauPlaceholder {
+    width: 900px;   /* Define width */
+    height: 1427px; /* Define height */
+}
+
+/* Optional: Add margin to other sections to ensure proper spacing */
+.center {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.common{
+    /* background-color: rgb(154, 154, 219); */
+    background-color: beige;
+    position:absolute;
+
+}
+
+.header{
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    height: 100px;
+    border-bottom: solid 1px grey;
+
+}
+
+.leftmenu {
+    position: fixed;
+    top: 114px;
+    left: 5px;
+    width: 100px;
+    bottom: 39px;
+    border-right: solid 1px grey;
+    padding-left: 5px;
+}
+
+.mainbody {
+    position: absolute; /* Ensure the element is positioned relative to the nearest positioned ancestor */
+    top: 114px;         /* Distance from the top of the page */
+    left: 114px;        /* Distance from the left of the page */
+    right: 114px;       /* Distance from the right of the page */
+    bottom: 39px;       /* Distance from the bottom of the page */
+    padding: 20px;      /* Optional: Adds padding inside the element */
+    overflow: auto;     /* Optional: Ensures content is scrollable if it overflows */
+}
+
+.rightmenu {
+    position: fixed;
+    top: 114px;
+    right: 5px;
+    bottom: 39px;
+    width: 100px;
+    border-left: solid 1px grey;
+    padding-left: 5px;
+    
+    
+}
+
+.footer{
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 25px;
+    font-size: 8px;
+    color: #999999;
+    text-align: center;
+    padding-top: 15px;
+    position: fixed;
+}
+
+.subheader{
+    float: right;
+}
+
+.empire-color{
+    color:red;
+    font-weight: bold;
+}
+
+.rebel-color{
+    color:blue;
+    font-weight: bold;
+}

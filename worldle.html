@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Wordle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f3f3f3;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tile {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            background-color: white;
+            text-transform: uppercase;
+        }
+        .tile.correct {
+            background-color: #6aaa64;
+            color: white;
+        }
+        .tile.misplaced {
+            background-color: #c9b458;
+            color: white;
+        }
+        .tile.wrong {
+            background-color: #787c7e;
+            color: white;
+        }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            width: 260px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #6aaa64;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #5b9956;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star Wars Wordle</h1>
+    <div class="grid"></div>
+    <input type="text" id="guess-input" maxlength="5" placeholder="Enter your guess" />
+    <button id="guess-button">Submit</button>
+    <div class="message"></div>
+
+    <script>
+        const WORDS = ["VADER", "DARTH", "FORCE", "LIGHT", "LUCAS", "PADME", "BLAST", "REBEL", "XWING", "SPACE"]; //here is where you change the guesses
+        const WORD = WORDS[Math.floor(Math.random() * WORDS.length)];
+        const MAX_GUESSES = 6;
+
+        const grid = document.querySelector('.grid');
+        const input = document.getElementById('guess-input');
+        const button = document.getElementById('guess-button');
+        const message = document.querySelector('.message');
+        let currentRow = 0;
+
+        // Initialize the grid
+        for (let i = 0; i < MAX_GUESSES * 5; i++) {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            grid.appendChild(tile);
+        }
+
+        // Check the guess
+        button.addEventListener('click', () => {
+            const guess = input.value.toUpperCase();
+            if (guess.length !== 5) {
+                message.textContent = "Please enter a 5-letter word.";
+                return;
+            }
+
+            const rowTiles = Array.from(grid.children).slice(currentRow * 5, (currentRow + 1) * 5);
+
+            guess.split('').forEach((letter, index) => {
+                const tile = rowTiles[index];
+                tile.textContent = letter;
+
+                if (letter === WORD[index]) {
+                    tile.classList.add('correct');
+                } else if (WORD.includes(letter)) {
+                    tile.classList.add('misplaced');
+                } else {
+                    tile.classList.add('wrong');
+                }
+            });
+
+            if (guess === WORD) {
+                message.textContent = "You guessed it! 🎉";
+                button.disabled = true;
+                input.disabled = true;
+                return;
+            }
+
+            currentRow++;
+            input.value = '';
+
+            if (currentRow === MAX_GUESSES) {
+                message.textContent = `Game over! The word was "${WORD}".`;
+                button.disabled = true;
+                input.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
